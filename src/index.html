@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Grid Gallery</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Image Gallery</h1>
+      <p>Browse our collection of beautiful images</p>
+    </header>
+    
+    <div id="image-grid" class="image-grid"></div>
+  </div>
+  
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+      </svg>
+    </button>
+    <div class="lightbox__content">
+      <img class="lightbox__image" src="" alt="">
+      <div class="lightbox__caption">
+        <h3 class="lightbox__title"></h3>
+        <p class="lightbox__description"></p>
+      </div>
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <path fill="currentColor" d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+      </svg>
+    </button>
+    <div class="lightbox__counter"></div>
+  </div>
+  
+  <script src="script.js"></script>
+  <script>
+    // Demo data
+    const demoImages = [
+      {
+        id: 1,
+        src: "https://picsum.photos/id/1018/800/600",
+        thumbnail: "https://picsum.photos/id/1018/400/300",
+        title: "Mountain Landscape",
+        description: "Beautiful mountain scenery with clouds",
+        alt: "Mountain landscape with clouds"
+      },
+      {
+        id: 2,
+        src: "https://picsum.photos/id/1015/600/800",
+        thumbnail: "https://picsum.photos/id/1015/300/400",
+        title: "River Flow",
+        description: "Peaceful river flowing through nature",
+        alt: "River flowing through nature"
+      },
+      {
+        id: 3,
+        src: "https://picsum.photos/id/1019/800/600",
+        thumbnail: "https://picsum.photos/id/1019/400/300",
+        title: "Waterfall",
+        description: "Majestic waterfall in the forest",
+        alt: "Waterfall in forest"
+      },
+      {
+        id: 4,
+        src: "https://picsum.photos/id/1016/800/600",
+        thumbnail: "https://picsum.photos/id/1016/400/300",
+        title: "Rocky Coast",
+        description: "Dramatic coastline with waves",
+        alt: "Rocky coastline with waves"
+      },
+      {
+        id: 5,
+        src: "https://picsum.photos/id/1020/600/800",
+        thumbnail: "https://picsum.photos/id/1020/300/400",
+        title: "Forest Path",
+        description: "Misty path through ancient forest",
+        alt: "Forest path in mist"
+      },
+      {
+        id: 6,
+        src: "https://picsum.photos/id/1021/800/600",
+        thumbnail: "https://picsum.photos/id/1021/400/300",
+        title: "Sunset View",
+        description: "Stunning sunset over the horizon",
+        alt: "Sunset view"
+      },
+      {
+        id: 7,
+        src: "https://picsum.photos/id/1022/800/600",
+        thumbnail: "https://picsum.photos/id/1022/400/300",
+        title: "Night Sky",
+        description: "Starlit sky with silhouetted trees",
+        alt: "Night sky with trees"
+      },
+      {
+        id: 8,
+        src: "https://picsum.photos/id/1023/600/800",
+        thumbnail: "https://picsum.photos/id/1023/300/400",
+        title: "Desert Dunes",
+        description: "Golden sand dunes in the desert",
+        alt: "Desert sand dunes"
+      },
+      {
+        id: 9,
+        src: "https://picsum.photos/id/1024/800/600",
+        thumbnail: "https://picsum.photos/id/1024/400/300",
+        title: "City Skyline",
+        description: "Urban skyline at dusk",
+        alt: "City skyline at dusk"
+      },
+      {
+        id: 10,
+        src: "https://picsum.photos/id/1025/800/600",
+        thumbnail: "https://picsum.photos/id/1025/400/300",
+        title: "Autumn Colors",
+        description: "Vibrant fall foliage",
+        alt: "Autumn fall foliage"
+      },
+      {
+        id: 11,
+        src: "https://picsum.photos/id/1026/600/800",
+        thumbnail: "https://picsum.photos/id/1026/300/400",
+        title: "Lake Reflection",
+        description: "Calm lake with mountain reflection",
+        alt: "Lake with mountain reflection"
+      },
+      {
+        id: 12,
+        src: "https://picsum.photos/id/1027/800/600",
+        thumbnail: "https://picsum.photos/id/1027/400/300",
+        title: "Snowy Peaks",
+        description: "Snow-capped mountains in winter",
+        alt: "Snowy mountain peaks"
+      }
+    ];
+    
+    // Initialize the ImageGrid
+    const container = document.getElementById('image-grid');
+    const imageGrid = new ImageGrid(container, {
+      columns: {
+        mobile: 1,
+        tablet: 2,
+        desktop: 3,
+        large: 4
+      },
+      gap: 16,
+      enableLightbox: true,
+      lazyLoad: true,
+      onImageClick: (image) => {
+        console.log('Image clicked:', image.title);
+      },
+      onOpen: () => {
+        console.log('Lightbox opened');
+      },
+      onClose: () => {
+        console.log('Lightbox closed');
+      }
+    });
+    
+    imageGrid.render(demoImages);
+  </script>
+</body>
+</html>
