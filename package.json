@@ -1,0 +1,22 @@
+{
+  "name": "image-grid",
+  "version": "1.0.0",
+  "description": "A modern, responsive image grid/gallery component with lightbox functionality",
+  "main": "src/script.js",
+  "scripts": {
+    "test": "jest tests/"
+  },
+  "keywords": [
+    "image",
+    "grid",
+    "gallery",
+    "lightbox",
+    "responsive"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0"
+  }
+}
