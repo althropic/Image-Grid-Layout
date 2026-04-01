@@ -87,3 +87,7 @@ Use CSS custom properties to customize the appearance:
 ## Browser Support
 
 Works in all modern browsers (Chrome, Firefox, Safari, Edge).
+
+## Acknowledgments
+
+[roadmap.sh](https://roadmap.sh/projects/image-grid) for the project specification.
